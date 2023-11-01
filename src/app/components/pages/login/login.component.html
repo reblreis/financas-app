@@ -8,34 +8,67 @@
         Informe as suas credenciais de acesso: 
     </mat-card-subtitle> 
     <mat-card-content> 
-        
-        <form> 
+        <form [formGroup]="formLogin" (ngSubmit)="onSubmit()"> 
             
             <p> 
                 <mat-form-field> 
                     <mat-label>Email de acesso:</mat-label> 
-                    <input matInput type="text" 
-                            placeholder="Digite seu email aqui." /> 
+                    <input 
+                        matInput 
+                        type="text"
+                        placeholder="Digite seu email aqui." 
+                        formControlName="email"
+                    /> 
+                    <mat-error *ngIf="form.email.touched && form.email.invalid"> 
+                        <span *ngIf="form.email.errors.required"> 
+                            Por favor, informe o email de acesso. 
+                        </span> 
+                        <span *ngIf="form.email.errors.email"> 
+                            Por favor, informe um endereço de email válido. 
+                        </span> 
+                    </mat-error>
                 </mat-form-field> 
-            </p> 
-                    
+            </p>                     
             <p> 
                 <mat-form-field> 
                     <mat-label>Senha de acesso:</mat-label> 
                         <input 
                             matInput 
                             type="password" 
-                            placeholder="Digite sua senha aqui." 
-                        /> 
+                            placeholder="Digite sua senha aqui."
+                            formControlName="senha" 
+                        />
+                        <mat-error *ngIf="form.senha.touched && form.senha.invalid"> 
+                            <span *ngIf="form.senha.errors.required"> 
+                                Por favor, informe a senha de acesso. 
+                            </span> 
+                            <span *ngIf="form.senha.errors.pattern"> 
+                                Informe a senha com letras minúsculas, maiúsculas, números, 
+                                símbolos e pelo menos 8 caracteres. 
+                            </span> 
+                        </mat-error> 
                 </mat-form-field> 
-            </p> 
-                    
+            </p>                    
             <p> 
-                <button mat-raised-button color="primary" 
-                        type="submit">Entrar</button> 
-            </p> 
-                
-        </form> 
-            
-    </mat-card-content> 
+                <button 
+                    mat-raised-button color="primary" 
+                    color="primary"
+                    type="submit"
+                    [disabled]="!formLogin.valid"
+                    >
+                        Entrar
+                </button> 
+            </p>
+            <p> 
+                <button 
+                    mat-raised-button 
+                    color="link" 
+                    type="button" 
+                    [routerLink]="['/pages/register']" 
+                > 
+                    Não possui conta? <strong>Cadastre-se aqui!</strong> 
+                </button> 
+            </p>                
+        </form>            
+    </mat-card-content>
 </mat-card>

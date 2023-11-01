@@ -9,12 +9,22 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RoutingModule } from './app.routing';
 import { MaterialModules } from './app.material';
+import { RegisterComponent } from './components/pages/register/register.component';
+import { CreateComponent } from './components/admin/create/create.component';
+import { ListComponent } from './components/admin/list/list.component';
+import { EditComponent } from './components/admin/edit/edit.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    CreateComponent,
+    ListComponent,
+    EditComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
