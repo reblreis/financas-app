@@ -1,3 +1,5 @@
 export const environment = {
-    apiUsuarios: ''
+    apiUsuarios: '',
+    chaveCriptografia: '',
+    chaveAutenticacao: ''
 };

@@ -32,7 +32,7 @@ export class RegisterComponent {
 
     senha: new FormControl('', [ 
       Validators.required, 
-      Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]) [A-Za-z\d@$!%*?&]{8,}$/) 
+      Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/) 
     ]) 
   }); 
   

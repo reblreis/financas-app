@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CriarContaResponse } from "../models/usuarios/criarconta-response.model"; 
 import { environment } from "src/environments/environment.development"; 
 import { createRequest } from "./commons.service"; 
-import { AutenticarRequest } from "../models/usuarios/autenticar-resquest.model"; 
+import { AutenticarRequest } from "../models/usuarios/autenticar-request.model"; 
 import { AutenticarResponse } from "../models/usuarios/autenticar-response.model"; 
 
 /* 

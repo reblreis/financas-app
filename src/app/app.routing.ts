@@ -6,6 +6,7 @@ import { CreateComponent } from './components/admin/create/create.component';
 import { ListComponent } from './components/admin/list/list.component'; 
 import { EditComponent } from './components/admin/edit/edit.component'; 
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
     {
@@ -18,19 +19,23 @@ const routes: Routes = [
     }, 
     { 
         path: 'admin/create', 
-        component: CreateComponent, 
+        component: CreateComponent,
+        canActivate: [AdminGuard] 
     }, 
     { 
         path: 'admin/list', 
-        component: ListComponent, 
+        component: ListComponent,
+        canActivate: [AdminGuard] 
     }, 
     { 
         path: 'admin/edit/:id', 
-        component: EditComponent, 
+        component: EditComponent,
+        canActivate: [AdminGuard] 
     }, 
     { 
         path: 'admin/dashboard', 
-        component: DashboardComponent, 
+        component: DashboardComponent,
+        canActivate: [AdminGuard] 
     },
     {
         path: '', 

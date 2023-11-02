@@ -4,9 +4,31 @@
             Finanças App - Sistema de controle financeiro 
         </a> 
     </div> 
-    <span> 
+    <span *ngIf="!isAuthenticated"> 
         <a [routerLink]="['/pages/login']" mat-button> 
             Acessar Sistema 
+        </a>
+        |
+        <a [routerLink]="['/pages/register']" mat-button> 
+            Criar Conta de Usuário 
+        </a> 
+    </span> 
+    <span *ngIf="isAuthenticated"> 
+        <a [routerLink]="['/admin/dashboard']" mat-button> 
+            Dashboard 
+        </a> 
+        <a [routerLink]="['/admin/create']" mat-button> 
+            Cadastrar Contas 
+        </a> 
+        <a [routerLink]="['/admin/list']" mat-button> 
+            Consultar Contas 
+        </a>
+        |
+        <a href="#" mat-button> 
+            <strong>{{nomeUsuario}}</strong> 
+        </a> 
+        <a href="#" mat-button (click)="sair()" color="accent"> 
+            Sair do Sistema 
         </a> 
     </span> 
 </mat-toolbar>
