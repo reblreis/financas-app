@@ -1,6 +1,10 @@
 <mat-card> 
     <mat-card-title><p>Criar Conta de Usuário</p></mat-card-title> 
     <mat-card-content> 
+        
+        <!-- exibir mensagem --> 
+        <app-messages [texto]="resposta"></app-messages>        
+        
         <form [formGroup]="formRegister" (ngSubmit)="onSubmit()"> 
             <p> 
                 <mat-form-field> 

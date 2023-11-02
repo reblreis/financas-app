@@ -14,6 +14,7 @@ import { CreateComponent } from './components/admin/create/create.component';
 import { ListComponent } from './components/admin/list/list.component';
 import { EditComponent } from './components/admin/edit/edit.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { MessagesComponent } from './components/layout/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DashboardComponent } from './components/admin/dashboard/dashboard.compo
     CreateComponent,
     ListComponent,
     EditComponent,
-    DashboardComponent
+    DashboardComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
