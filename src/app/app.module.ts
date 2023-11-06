@@ -15,6 +15,7 @@ import { ListComponent } from './components/admin/list/list.component';
 import { EditComponent } from './components/admin/edit/edit.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { MessagesComponent } from './components/layout/messages/messages.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { MessagesComponent } from './components/layout/messages/messages.compone
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

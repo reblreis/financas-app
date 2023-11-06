@@ -4,6 +4,63 @@
         <mat-card-subtitle>Cadastre suas contas 
                             a pagar ou a receber.</mat-card-subtitle> 
     </mat-card-header> 
-    <mat-card-content>        
-    </mat-card-content>
+    <mat-card-content> 
+        <br /> 
+        <div> 
+            <form [formGroup]="createForm" (ngSubmit)="onSubmit()"> 
+                <div class="grid-container"> 
+                    <mat-form-field class="grid-item"> 
+                        <input 
+                            matInput placeholder="Nome da conta:" 
+                            formControlName="nome" 
+                        /> 
+                    </mat-form-field> 
+                    <mat-form-field class="grid-item"> 
+                        <input 
+                            type="date" 
+                            matInput 
+                            placeholder="Data da conta:" 
+                            formControlName="data" 
+                        /> 
+                    </mat-form-field> 
+                    <mat-form-field class="grid-item"> 
+                        <input 
+                            matInput 
+                            placeholder="Valor da conta:" 
+                            formControlName="valor" 
+                        /> 
+                    </mat-form-field> 
+                    <mat-form-field class="grid-item"> 
+                        <mat-label>Tipo da conta:</mat-label> 
+                        <mat-select formControlName="tipo"> 
+                            <mat-option value="">Escolha uma opção</mat-option> 
+                            <mat-option value="1">Conta a receber</mat-option>
+                            <mat-option value="2">Conta a pagar</mat-option> 
+                        </mat-select> 
+                    </mat-form-field> 
+                    <mat-form-field class="grid-item"> 
+                        <mat-label>Categoria da conta:</mat-label> 
+                        <mat-select formControlName="categoria"> 
+                            <mat-option value="">Escolha uma opção</mat-option> 
+                        </mat-select> 
+                    </mat-form-field> 
+                    <mat-form-field class="grid-item"> 
+                        <input 
+                            matInput 
+                            placeholder="Descrição da conta:" 
+                            formControlName="descricao" 
+                        /> 
+                    </mat-form-field> 
+                    <button 
+                        mat-raised-button 
+                        class="grid-item" 
+                        color="primary" 
+                        type="submit" 
+                    > 
+                        Cadastrar Conta 
+                    </button> 
+                </div> 
+            </form> 
+        </div> 
+    </mat-card-content> 
 </mat-card>

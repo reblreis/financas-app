@@ -19,7 +19,6 @@ export function createLogin(data: AutenticarResponse): void {
 */ 
 export function getUserLogin(): AutenticarResponse | null { 
     const data = localStorage.getItem(environment.chaveAutenticacao) as string | null; 
-        
     if(data != null) { 
         const result = decrypt(data); 
         if(result != null) { 

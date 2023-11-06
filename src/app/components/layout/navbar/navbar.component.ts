@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { getUserLogin, isUserAuthenticated, logout } from 'src/app/helpers/authentication.helper';
@@ -8,7 +8,7 @@ import { getUserLogin, isUserAuthenticated, logout } from 'src/app/helpers/authe
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
 
   isAuthenticated: boolean = false; 
   nomeUsuario: string = ''; 

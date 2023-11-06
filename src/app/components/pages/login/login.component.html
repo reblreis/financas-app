@@ -13,7 +13,6 @@
         <app-messages [texto]="resposta"></app-messages>
         
         <form [formGroup]="formLogin" (ngSubmit)="onSubmit()"> 
-            
             <p> 
                 <mat-form-field> 
                     <mat-label>Email de acesso:</mat-label> 
@@ -59,8 +58,8 @@
                     color="primary"
                     type="submit"
                     [disabled]="!formLogin.valid"
-                    >
-                        Entrar
+                >
+                    Entrar
                 </button> 
             </p>
             <p> 
