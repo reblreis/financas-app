@@ -6,7 +6,8 @@ export class AutenticarResponse {
     id: string = '';
     nome: string = ''; 
     email: string = '';
-    dataHoraAcesso: Date | null = null;
-    dataHoraExpiracao: Date | null = null;
     accessToken: string = '';
+    perfil: string = '';
+    dataHoraAcesso: Date | null = null;
+    dataHoraExpiracao: Date | null = null;    
 }

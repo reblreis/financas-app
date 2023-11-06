@@ -32,10 +32,8 @@ export function getUserLogin(): AutenticarResponse | null {
     função para verificar se os dados gravados na local storage 
     do usuário autenticado são válidos 
 */ 
-export function isUserAuthenticated(): boolean { 
-    
-    const result = getUserLogin(); 
-    
+export function isUserAuthenticated(): boolean {    
+    const result = getUserLogin();    
     if(result != null) { 
         const dataAtual = new Date(); 
         const dataExpiracao = new Date(result.dataHoraExpiracao as Date); 
@@ -48,7 +46,6 @@ export function isUserAuthenticated(): boolean {
 /* 
     função para logout do usuário 
 */ 
-export function logout(): void { 
-    
+export function logout(): void {    
     localStorage.removeItem(environment.chaveAutenticacao); 
 }

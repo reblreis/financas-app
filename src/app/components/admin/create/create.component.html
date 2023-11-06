@@ -41,7 +41,11 @@
                     <mat-form-field class="grid-item"> 
                         <mat-label>Categoria da conta:</mat-label> 
                         <mat-select formControlName="categoria"> 
-                            <mat-option value="">Escolha uma opção</mat-option> 
+                            <mat-option value="">Escolha uma opção</mat-option>                            
+                            <mat-option *ngFor="let item of categorias" 
+                                value="{{item.id}}"> 
+                                {{item.nome | uppercase}} 
+                            </mat-option>                            
                         </mat-select> 
                     </mat-form-field> 
                     <mat-form-field class="grid-item"> 

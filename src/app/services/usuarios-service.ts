@@ -16,7 +16,7 @@ export function criarConta(request: CriarContaRequest)
         //configurando a requisição 
         const config = { 
             method: 'post', 
-            url: `${environment.apiUsuarios}/criarconta`, 
+            url: `${environment.apiUsuarios}/usuarios/criarconta`, 
             data: request 
         }; 
         
@@ -33,7 +33,7 @@ export function autenticar(request: AutenticarRequest)
         //configurando a requisição 
         const config = { 
             method: 'post', 
-            url: `${environment.apiUsuarios}/autenticar`, 
+            url: `${environment.apiUsuarios}/usuarios/autenticar`, 
             data: request 
         }; 
         
