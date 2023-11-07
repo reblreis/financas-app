@@ -3,7 +3,49 @@
         <mat-card-title>Consulta de contas</mat-card-title> 
         <mat-card-subtitle>Pesquise suas contas a pagar por período de datas.</mat-card-subtitle> 
     </mat-card-header> 
-    <mat-card-content> 
+    <mat-card-content>
+        <br /> 
+        
+        <form [formGroup]="listForm" (ngSubmit)="onSubmit()"> 
+            <div class="grid-container"> 
+                <mat-form-field class="grid-item"> 
+                    <input 
+                        type="date" 
+                        matInput 
+                        placeholder="Data de início" 
+                        formControlName="dataMin" 
+                    /> 
+                    <mat-error *ngIf="form.dataMin.touched && form.dataMin.invalid"> 
+                        <span *ngIf="form.dataMin.errors.required"> 
+                            Por favor, informe a data de início. 
+                        </span> 
+                    </mat-error> 
+                </mat-form-field> 
+                <mat-form-field class="grid-item"> 
+                    <input 
+                        type="date" 
+                        matInput 
+                        placeholder="Data de fim"
+                        formControlName="dataMax" 
+                    /> 
+                    <mat-error *ngIf="form.dataMax.touched && form.dataMax.invalid"> 
+                        <span *ngIf="form.dataMax.errors.required"> 
+                            Por favor, informe a data de fim.
+                        </span> 
+                    </mat-error> 
+                </mat-form-field> 
+                <button 
+                    mat-raised-button 
+                    class="grid-item button" 
+                    color="primary" 
+                    type="submit" 
+                    [disabled]="!listForm.valid" 
+                > 
+                    Pesquisar Contas 
+                </button> 
+            </div> 
+        </form>
+
         <br /> 
         <div> 
             <mat-table [dataSource]="dataTable" class="tabela-contas"> 
@@ -12,14 +54,19 @@
                     <mat-header-cell *matHeaderCellDef>
                         <strong>Data</strong></mat-header-cell 
                     > 
-                    <mat-cell *matCellDef="let item">{{ item.data }}</mat-cell> 
-                </ng-container> 
+                    <mat-cell *matCellDef="let item">
+                        {{ item.data | date: 'dd/MM/yyyy' }}
+                    </mat-cell> 
+                </ng-container>
+                 
                 <!-- coluna 'valor' --> 
                 <ng-container matColumnDef="valor"> 
                     <mat-header-cell *matHeaderCellDef 
                     ><strong>Valor</strong></mat-header-cell 
                         > 
-                        <mat-cell *matCellDef="let item">{{ item.valor }}</mat-cell> 
+                        <mat-cell *matCellDef="let item">
+                            {{ item.valor | currency: 'R$ ' }}
+                        </mat-cell> 
                 </ng-container> 
                     
                 <!-- coluna 'tipo' --> 
@@ -27,7 +74,9 @@
                         <mat-header-cell *matHeaderCellDef 
                             ><strong>Tipo</strong></mat-header-cell 
                     > 
-                    <mat-cell *matCellDef="let item">{{ item.tipo }}</mat-cell> 
+                    <mat-cell *matCellDef="let item">
+                        {{ item.tipo == 1 ? 'Conta a receber' : 'Conta a pagar' }}
+                    </mat-cell> 
                 </ng-container> 
                         
                 <!-- coluna 'categoria' --> 
@@ -36,8 +85,10 @@
                         ><strong>Categoria</strong>
                     </mat-header-cell 
                     > 
-                    <mat-cell *matCellDef="let item">{{ item.categoria }}
-                    </mat-cell> </ng-container> 
+                    <mat-cell *matCellDef="let item">
+                        {{ item.categoria | uppercase }}
+                    </mat-cell> 
+                </ng-container> 
                     
                 <!-- coluna 'nome' --> 
                 <ng-container matColumnDef="nome"> 
@@ -61,13 +112,19 @@
                             Editar 
                         </button> 
                         &nbsp; 
-                        <button mat-raised-button color="warn">Excluir</button> 
+                        <button mat-raised-button
+                            (click)="onDelete(item.id)" 
+                            color="warn">
+                            Excluir
+                        </button> 
                     </mat-cell> 
-                </ng-container> 
-                
+                </ng-container>                
                 <mat-header-row *matHeaderRowDef="colunas"></mat-header-row> 
                 <mat-row *matRowDef="let row; columns: colunas"></mat-row> 
-            </mat-table> 
-        </div> 
-    </mat-card-content> 
+            </mat-table>
+            <p> 
+                Quantidade de registros obtidos: {{dataTable.data.length}} 
+            </p>
+        </div>
+    </mat-card-content>
 </mat-card>

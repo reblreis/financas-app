@@ -1,19 +1,30 @@
 <mat-card> 
     <mat-card-header> 
         <mat-card-title>Cadastro de contas</mat-card-title> 
-        <mat-card-subtitle>Cadastre suas contas 
-                            a pagar ou a receber.</mat-card-subtitle> 
+        <mat-card-subtitle>Cadastre suas contas a pagar ou a receber.</mat-card-subtitle> 
     </mat-card-header> 
-    <mat-card-content> 
-        <br /> 
-        <div> 
+    <mat-card-content>
+
+        <br />
+
+        <!-- exibição das mensagens --> 
+        <app-messages [texto]="mensagem"/> 
+        <br />
+
+        <div>
+
             <form [formGroup]="createForm" (ngSubmit)="onSubmit()"> 
                 <div class="grid-container"> 
                     <mat-form-field class="grid-item"> 
                         <input 
                             matInput placeholder="Nome da conta:" 
                             formControlName="nome" 
-                        /> 
+                        />                        
+                        <mat-error *ngIf="form.nome.touched && form.nome.invalid"> 
+                            <span *ngIf="form.nome.errors.required"> 
+                                Por favor, informe o nome da conta. 
+                            </span> 
+                        </mat-error>
                     </mat-form-field> 
                     <mat-form-field class="grid-item"> 
                         <input 
@@ -21,14 +32,24 @@
                             matInput 
                             placeholder="Data da conta:" 
                             formControlName="data" 
-                        /> 
+                        />                        
+                        <mat-error *ngIf="form.data.touched && form.data.invalid"> 
+                            <span *ngIf="form.data.errors.required"> 
+                                Por favor, informe a data da conta. 
+                            </span> 
+                        </mat-error>
                     </mat-form-field> 
                     <mat-form-field class="grid-item"> 
                         <input 
                             matInput 
                             placeholder="Valor da conta:" 
                             formControlName="valor" 
-                        /> 
+                        />
+                        <mat-error *ngIf="form.valor.touched && form.valor.invalid"> 
+                            <span *ngIf="form.valor.errors.required"> 
+                                Por favor, informe o valor da conta. 
+                            </span> 
+                        </mat-error> 
                     </mat-form-field> 
                     <mat-form-field class="grid-item"> 
                         <mat-label>Tipo da conta:</mat-label> 
@@ -36,30 +57,46 @@
                             <mat-option value="">Escolha uma opção</mat-option> 
                             <mat-option value="1">Conta a receber</mat-option>
                             <mat-option value="2">Conta a pagar</mat-option> 
-                        </mat-select> 
+                        </mat-select>
+                        <mat-error *ngIf="form.tipo.touched && form.tipo.invalid"> 
+                            <span *ngIf="form.tipo.errors.required"> 
+                                Por favor, selecione o tipo da conta. 
+                            </span> 
+                        </mat-error> 
                     </mat-form-field> 
                     <mat-form-field class="grid-item"> 
                         <mat-label>Categoria da conta:</mat-label> 
                         <mat-select formControlName="categoria"> 
                             <mat-option value="">Escolha uma opção</mat-option>                            
                             <mat-option *ngFor="let item of categorias" 
-                                value="{{item.id}}"> 
+                                        value="{{item.id}}"> 
                                 {{item.nome | uppercase}} 
                             </mat-option>                            
-                        </mat-select> 
+                        </mat-select>
+                        <mat-error *ngIf="form.categoria.touched && form.categoria.invalid"> 
+                            <span *ngIf="form.categoria.errors.required"> 
+                                Por favor, selecione a categoria da conta. 
+                            </span> 
+                        </mat-error> 
                     </mat-form-field> 
                     <mat-form-field class="grid-item"> 
                         <input 
                             matInput 
                             placeholder="Descrição da conta:" 
                             formControlName="descricao" 
-                        /> 
+                        />
+                        <mat-error *ngIf="form.descricao.touched && form.descricao.invalid"> 
+                            <span *ngIf="form.descricao.errors.required"> 
+                                Por favor, informe a descrição da conta. 
+                            </span> 
+                        </mat-error>
                     </mat-form-field> 
                     <button 
                         mat-raised-button 
                         class="grid-item" 
                         color="primary" 
-                        type="submit" 
+                        type="submit"
+                        [disabled]="!createForm.valid" 
                     > 
                         Cadastrar Conta 
                     </button> 
