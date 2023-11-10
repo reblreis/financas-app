@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { isUserAuthenticated } from "../helpers/authentication.helper";
+import { getUserLogin, isUserAuthenticated } from "../helpers/authentication.helper";
 
 @Injectable({
     providedIn: 'root'
@@ -18,11 +18,14 @@ export class AdminGuard {
     */
    canActivate() {
     if(isUserAuthenticated()) {
-        return true;
+        //capturar os dados do usuário autenticado 
+        const user = getUserLogin(); 
+        //verificando o nome do perfil do usuário 
+        if(user?.perfil == "USER_ROLE") { 
+            return true; 
+        }
     }
-    else {
-        this.router.navigate(['/pages/login'])
-        return false;
+    this.router.navigate(['/pages/login'])
+    return false;
     }
-   }
 }

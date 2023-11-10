@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { EditComponent } from './components/admin/edit/edit.component';
 import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
 import { MessagesComponent } from './components/layout/messages/messages.component';
 import { ChartModule } from 'angular-highcharts';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,11 +36,14 @@ import { ChartModule } from 'angular-highcharts';
     MaterialModules,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     NgxSpinnerModule,
-    ChartModule
+    ChartModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
